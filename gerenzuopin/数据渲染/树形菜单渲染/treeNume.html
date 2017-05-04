@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<style>
+			
+			
+			#oUl li ul.show {
+				display: block;
+			}
+			
+			#oUl li ul.hide {
+				display: none;
+			}
+			
+			#oUl li h3 span {
+				padding: 0px 10px;
+			}
+			
+			#oUl li h3.padL {
+				padding-left: 30px;
+			}
+			
+			li {
+				list-style: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<ul id="oUl">
+			
+		</ul>
+	</body>
+	<script>
+		var arr = [{
+			title: "第一级菜单",
+			child: [{
+				title: "第二集菜单"
+			}, {
+				title: "第二集菜单",
+				child: [{
+					title: "第三集菜单"
+				}, {
+					title: "第三集菜单",
+					child: [{
+						title: "第四集菜单"
+					}, {
+						title: "第四集菜单"
+					}, {
+						title: "第四集菜单"
+					}]
+				}, {
+					title: "第三集菜单"
+				}]
+			}, {
+				title: "第二集菜单",
+				child: [{
+					title: "第三集菜单"
+				}, {
+					title: "第三集菜单"
+				}]
+			}]
+		}, {
+			title: "第一级菜单",
+			child: [{
+				title: "第二集菜单"
+			}, {
+				title: "第二集菜单",
+				child: [{
+					title: "第三集菜单"
+				}, {
+					title: "第三集菜单",
+					child: [{
+						title: "第四集菜单"
+					}, {
+						title: "第四集菜单"
+					}, {
+						title: "第四集菜单"
+					}]
+				}, {
+					title: "第三集菜单"
+				}]
+			}, {
+				title: "第二集菜单",
+				child: [{
+					title: "第三集菜单"
+				}, {
+					title: "第三集菜单"
+				}]
+			}]
+		}, {
+			title: "第一集菜单",
+			child: [{
+				title: "第二集菜单"
+			}, {
+				title: "第二集菜单"
+			}]
+		}, ];
+		
+		var oul=document.querySelector('#oUl');
+		
+		function fn(arr){
+			var str="";
+			for(var i=0;i<arr.length;i++){//for循环去遍历每个数组，实现ul下的第一层子项
+				var json=arr[i];//获取数组里面的对象
+				console.log(json)
+				str+='<li>';//拼接li
+					for(var attr in json){//遍历数组
+						if(attr=='title'){
+							str+='<h3><span>+</span>'+json.title+'</h3>';//首先在li里面放h3
+//							var h3=document.querySelector('h3');
+//							h3.onclick=function(){}
+						}
+						if(attr=='child'){
+							str+='<ul class="hide">';//再放li
+								str+=fn(json.child);//li里面在放ul，到了这一步之后会重复上面的步骤，这时我们可以用递归了
+							str+='</ul>';
+						}
+					}
+				str+='</li>';
+			}
+			return str;//返回出来的所有东西就是放到ul里面的内容
+		}	
+		oul.innerHTML=fn(arr);//在ul里面的添加的所有内容，到这一步为止在ul里面添加了h3和直接子集li	
+		var h3=document.querySelectorAll("h3");
+		for(var i=0;i<h3.length;i++){//for循环给每个h3坐点击事件
+			h3[i].onclick=function(){
+				var parent=this.parentNode.parentNode;//获取当前点击的h3的父级的父级
+				var uls=parent.getElementsByTagName("ul");//获取所有h3的同级ul
+				if(this.nextElementSibling){//判断当前点击的h3有没有下一个
+					if(this.children[0].innerHTML=="+"){//如果当前点击的h3为+号，就让它的下一个兄弟节点显示
+						for(var j=0;j<uls.length;j++){//for循环清洗
+							if(uls[j]!=this.nextElementSibling){//当ul不等于当前点击的h3的兄弟节点的时候才隐藏
+								uls[j].style.display="none";
+								uls[j].previousElementSibling.children[0].innerHTML="+"
+							}
+						}
+						this.children[0].innerHTML="-";//点击换成减号
+						this.nextElementSibling.style.display='block';//显示当前点击的h3的兄弟节点
+						
+					}else{//当点击的h3前面为减号的时候
+						this.children[0].innerHTML="+";//让它变成加号
+						this.nextElementSibling.style.display='none';//它的下一个兄弟节点隐藏
+					}
+					
+					
+				}
+					
+				
+			}
+		}
+		
+		
+		console.log(arr)
+	</script>
+
+</html>

@@ -1,0 +1,294 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<link href="style/weibo.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="znsArea">
+<!--留言-->
+     <div class="takeComment">
+        <textarea name="textarea" class="takeTextField" id="tijiaoText"></textarea>
+        <div class="takeSbmComment">
+            <input type="button" id="btn1" class="inputs" value="" />
+            <span>(可按 Enter 回复)</span>
+        </div>
+    </div>
+<!--已留-->
+    <div class="commentOn">
+        <div class="messList" id="div1" style="height:502px">
+        	<!--<div class="reply">
+                <p class="replyContent">卫士，新款卫士将推出总共14种车身式样。其中， XS旅行款车型售价为32295英镑(约33.6万元)。</p>
+                <p class="operation">
+                    <span class="replyTime">2017-02-6 16:37:60</span>
+                    <span class="handle">
+                    	<a href="javascript:;" class="top">0</a>
+                        <a href="javascript:;" class="down_icon">0</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div>-->
+        </div>
+        <div class="page">
+        	<!--<a href="javascript:;" class="active">1</a>
+        	<a href="javascript:;">2</a>
+        	<a href="javascript:;">3</a>-->
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+	var pageDiv = $('.page');
+	var hash = window.location.hash;
+	var newPage = 1;
+	
+	if(hash){
+		newPage = window.location.hash.split('=')[1];
+	}else{
+		window.location.hash = 'page=1';
+	}
+		
+		
+	/*
+ 		weibo.php?act=add&content=xxx	添加一条
+		返回：{error:0, id: 新添加内容的ID, time: 添加时间}
+	*/
+	$('#btn1').click(function(){
+		var val = $('#tijiaoText').val();
+		if(!val.trim()){
+			alert('亲，请留下点东西！');
+			return;
+		}
+		
+		$.ajax({
+			url:'weibo.php?act=add&content='+val,
+			success:function(data){
+				
+				var json = eval('('+data+')');      // 把返回值变成对象
+				
+				var d = getTime(json.time);  		//调用设置时间的函数
+				
+				window.location.hash = 'page=1';    //只要一条就变到第一页
+				
+				var box = creatDiv(json.id,val,d,0,0);
+				
+				//getPage();
+				
+			    $('#div1').prepend(box);
+			    pageFn();
+			    $('#tijiaoText').val('');
+			}
+		});
+	})
+	
+	$(document).on('keydown',function(ev){
+		if(ev.keyCode == 13){
+			$('#btn1').trigger('click');  //触发器，触发某个元素的某个事件
+			return false;
+		}
+	})
+	
+	/*
+	 * 		weibo.php?act=get&page=1		获取一页数据
+			返回：[{id: ID, content: "内容", time: 时间戳, acc: 顶次数, ref: 踩次数}, {...}, ...] 
+	 */
+	
+	
+	getPage(newPage);
+	function getPage(newPage){
+		$('#div1').html('');
+		$.ajax({
+			url:'weibo.php?act=get&page='+newPage,
+			success:function(data){
+				console.log(newPage);
+				var arr = eval('('+data+')');
+				
+				$.each(arr,function(i,ele){
+					var time = getTime(arr[i].time);
+					var div = creatDiv(arr[i].id,arr[i].content,time,arr[i].acc,arr[i].ref);
+					$('#div1').append(div);
+				})
+			}	
+		})	
+	}
+	pageFn();
+	function pageFn(){  //生成页码的
+		pageDiv.html('');
+		$.ajax({
+			url:"weibo.php?act=get_page_count",
+			success:function(data){
+				var num = eval('('+data+')').count;
+				var hash = window.location.hash.split('=')[1];
+				
+				hash = parseInt(hash);
+				
+				if(hash>num){
+					window.location.hash = 'page='+num;
+				}
+				if(hash<1){
+					window.location.hash = 'page='+1;
+				}
+				if(newPage < 4){
+					newPage = 4;
+				}
+				if(newPage > data.count-3){
+					newPage = data.count-3;
+				}
+				
+				
+						
+				for(var i= (newPage-3);i<=(newPage+3);i++){
+					if(num<i){
+						break;					
+					}
+					var oA = $('<a href="javascript:;">');
+					oA.html(i);
+					oA.on('click',function(){
+						window.location.hash = 'page='+this.innerHTML;
+					})			
+					pageDiv.append(oA);
+				}
+
+				pageDiv.find('a').each(function(i,ele){
+					if(ele.innerHTML == hash){
+						ele.className = 'active';
+					}else{
+						ele.className = '';
+					}
+				})
+				
+			}
+		});
+		
+	}
+	
+	window.onhashchange = function(){
+		var hash = window.location.hash.split('=')[1];
+		hash = parseInt(hash);
+		
+		getPage(hash);
+		
+		newPage = hash;
+		pageFn();
+		pageDiv.find('a').each(function(i,ele){
+			if(ele.innerHTML == hash){
+				ele.className = 'active';
+			}else{
+				ele.className = '';
+			}
+		})
+		
+		
+	}
+	function creatDiv(id,cont,time,acc,ref){/*通过传参添加div*/
+		var box = $('<div class="reply" id="'+id+'"></div>');
+		
+		var str = '<p class="replyContent">'+cont+'</p>'+
+	                '<p class="operation">'+
+	                    '<span class="replyTime">'+time+'</span>'+
+	                   '<span class="handle">'+
+	                    	'<a href="javascript:;" class="top">'+acc+'</a>'+
+	                        '<a href="javascript:;" class="down_icon">'+ref+'</a>'+
+	                        '<a href="javascript:;" class="cut">删除</a>'+
+	                    '</span>'+
+	               '</p>'; 
+	               
+	    box.html(str);
+	    
+	    /*
+     		weibo.php?act=acc&id=num			顶某一条数据
+			返回：{error:0}
+ 
+	     */
+	    var top = box.find('.top');
+	    var onoff_top = true;
+	    top.on('click',function(){  //点赞
+	    	if(onoff_top){
+	    		var num = parseInt(this.innerHTML) +1;
+		    	this.innerHTML = num;
+		    	onoff_top = !onoff_top;	
+		    	$.ajax({
+		    		url:'weibo.php?act=acc&id='+id,
+		    		success:function(data){}
+		    	})
+	    	}	
+	    })
+	    
+	    /*
+	     	weibo.php?act=ref&id=num			踩某一条数据
+			返回：{error:0}
+	    */
+	    var down = box.find('.down_icon');
+	    var onoff_down = true;
+	    down.on('click',function(){
+	    	if(onoff_down){
+	    		var num = parseInt(this.innerHTML) +1;
+		    	this.innerHTML = num;
+		    	onoff_down = !onoff_down;	
+		    	$.ajax({
+		    		url:'weibo.php?act=ref&id='+id
+		    	})
+	    	}
+	    })
+	    
+	    /*
+     		weibo.php?act=del&id=num			删除某一条数据
+			返回：{error:0}
+	    */
+	    
+	    var cut = box.find('.cut');
+	    cut.on('click',function(){
+	    	$.ajax({
+	    		url:"weibo.php?act=del&id="+id,
+	    		success:function(data){ 
+	    			pageFn();
+	    			var hash = window.location.hash.split('=')[1];
+	    			hash = parseInt(hash);
+	    			getPage(hash);
+	    			
+	    		}
+	    	});
+	    })    
+	    return box;	    
+	}
+	
+	/*
+ 		weibo.php?act=get&page=1		获取一页数据
+		返回：[{id: ID, content: "内容", time: 时间戳, acc: 顶次数, ref: 踩次数}, {...}, ...]
+			
+	 **/
+	
+	
+	
+	
+	
+	
+	function getTime(t){
+		var time = new Date(t*1000);
+		var Y = oT(time.getFullYear());				
+		var Mon = oT(time.getMonth()+1);			
+		var Data = oT(time.getDate());				
+		var H = oT(time.getHours());				
+		var Min = oT(time.getMinutes());				
+		var Sec = oT(time.getSeconds());
+		
+		//2017-04-5 16:37:01;	
+		var riqi = Y+"-"+Mon+"-"+Data+' '+H+':'+Min+':'+Sec;
+		return riqi;
+	}
+	
+	function oT(n){
+		return n= n<10?'0'+n:''+n;
+	}
+	
+	
+	
+</script>
+</body>
+
+</html>

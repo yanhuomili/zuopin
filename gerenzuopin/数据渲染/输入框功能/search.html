@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			input {
+				width: 100%;
+				height: 30px;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				display: none;
+			}
+			
+			li {
+				list-style: none;
+				background-color: #009999;
+				margin-top: 3px;
+				line-height: 30px;
+				width: 100%;
+			}
+			
+			a {
+				text-decoration: none;
+				color: white;
+				display: block;
+				width: 100%;
+			}
+			
+			a:hover,
+			.hover {
+				background-color: #00FF99;
+			}
+			
+			#box {
+				width: 500px;
+				margin: 100px auto 0;
+			}
+			
+			.select {
+				background-color: #60625b;
+			}
+			.show{
+				display: block;
+			}
+			.hide{
+				display: none;
+			}
+			.active{
+				background: #f60;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="text" id="s" />
+			<ul id="list">
+				<li>
+					<a href="javascript:;">《第七个读者》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《 心理罪 画像》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《 心理罪 教化场》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《 心理罪 暗河》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《 心理罪 城市之光》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《地球往事》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《黑暗森林》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《死神永生》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《乡村教师》</a>
+				</li>
+				<li>
+					<a href="javascript:;">《地球大炮》</a>
+				</li>
+			</ul>
+		</div>
+		
+		
+		<div class="con"></div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js">
+			
+		</script>
+		<script>
+			var btn = document.getElementById('s');
+			var list = document.getElementById('list');
+			var lis = list.getElementsByTagName('li');
+			var oA = list.getElementsByTagName('a')
+			var onoff = true;
+			var arr=[];//存放内容的数组
+			var arr1=[];//存放数字的数组
+			var num = -1;
+			$(btn).on('focus',function(){
+				list.className = 'show';	//获取焦点后显示ul列表
+			})
+			
+			btn.onblur = function(){//失去焦点
+				if(onoff){
+					delColor();//删除所有颜色
+					arr.length=0;//清空数组
+					btn.value='';//清空输入框
+					arr1=[];//清空数字数组
+					num=-1;//
+					for(var i=0;i<arr1.length;i++){
+						lis[arr1[i]].className = '';//将所有class名清除
+					}
+					list.className = 'hide';//隐藏ul列表
+				}
+			}
+			list.onmouseenter = list.onmouseleave=function(){
+				onoff = !onoff;
+				btn.select();//模拟获取焦点，让输入框一直获得焦点
+			}
+			for(var i=0;i<oA.length;i++){
+				oA[i].index = i;//自定义属性
+				oA[i].onclick = function(){
+					if(arrIndex(this.innerHTML,arr) == -1){//判断值在数组中有没有
+						arr.push(this.innerHTML);//如果数组中不存在，就添加内容的数组
+						arr1.push(this.index);//把相对应的下标存放到数组中
+					}else{
+						arr.splice(arrIndex(this.innerHTML,arr),1);//如果有就删除
+						arr1.splice(arrIndex(this.index,arr1),1);//如果有就把下标删除
+					}
+					setInner();//往输入框里面添加内容
+					delColor();//先删除颜色
+					setColor();//再给需要颜色的li添加颜色
+					num = this.index;//
+				}
+			}
+//			键盘事件
+			document.onkeydown = function(ev){
+				var code = ev.keyCode;
+				switch(code){
+					case 38:
+						$(btn).trigger('focus');//模拟获取焦点
+						num--;
+						if(num<0){
+							num = lis.length-1;
+						}
+						delColor();//颜色清洗
+						hover();//给对应的li  hover事件
+						setColor();//设置颜色
+						break;
+					case 40:
+						$(btn).trigger('focus');
+						num++;
+						num = num%lis.length;
+						delColor();//颜色清洗
+						hover();//给对应的li  hover事件
+						setColor();//设置颜色
+						break;
+					case 13:
+						if(ev.ctrlKey){//如果按住ctrl键
+							if(arrIndex(num,arr1) == -1){//判断下标在数组中有没有
+								arr1.push(num);//如果没有就添加
+								arr.push(oA[num].innerHTML);//把当前的内容放到数组里面
+							}else{
+								arr1.splice(arrIndex(num,arr1),1);//如果有了就删除
+								arr.splice(arrIndex(oA[num].innerHTML,arr),1);//删除数组里面的数字
+							}
+							delColor();
+							setColor();
+							setInner();
+							
+						}else{//没按ctrl键的情况下
+							delColor();
+							if(arrIndex(num,arr1) == -1){
+								arr1 = [];
+								arr = [];
+								arr1.push(num);
+								arr.push(oA[num].innerHTML);
+							}else{
+								arr1=arr=[];
+							}
+							setColor();
+							setInner();
+						}
+				}
+			}
+			function hover(){
+				lis[num].className = 'hover';
+			}
+			//循环arr1数组，对相对应的李添加背景颜色
+			function setColor(){
+				for(var i=0;i<arr1.length;i++){
+					lis[arr1[i]].className = 'active';
+				}				
+			}
+			function delColor(){
+				for(var i=0;i<lis.length;i++){
+					lis[i].className = '';			
+				}
+			}
+			//数组中存在的话就返回下标，不存在的话就返回-1。
+			function arrIndex(str,rang){
+				for(var i=0;i<rang.length;i++){
+					if(rang[i]==str){
+						return i;
+					}
+				}
+				return -1;
+			}
+			//输入内容
+			function setInner(){
+				btn.value = arr.join(',')
+			}
+			//focus();是一个方法，获取焦点的方法
+			//select();是一个方法，获取焦点的方法
+
+
+		</script>
+
+	</body>
+
+</html>

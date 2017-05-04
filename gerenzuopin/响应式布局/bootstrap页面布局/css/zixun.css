@@ -1,0 +1,142 @@
+
+.jumbotron{
+	background: #666666;
+	color: #FFFFFF;
+	margin: 50px 0 0 0;
+	
+}
+.jumbotron h1{
+	font-size: 26px;
+	padding: 0 0 0 20px;
+	
+}.jumbotron h4{
+	font-size: 16px;
+	padding: 0 0 0 20px;
+	
+}
+
+
+
+/*左边*/
+#information{
+	background: #eee;
+	padding: 40px 0;
+	
+}
+.info-content{
+	background: #fff;
+	margin: 0 0 20px 0;
+	box-shadow: 2px 2px 3px #ccc;
+}
+.info-content img{
+	padding: 12px 0;
+}
+
+.info-content h4{
+	color: #333;
+	padding:2px 0 0 0 ;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.6;
+}
+.info-content p{
+	line-height: 1.5;
+	
+}
+
+/*右边*/
+.info-right{
+	background: #fff;
+	box-shadow: 2px 2px 3px #ccc;
+	
+}
+.info-right blockquote{
+	margin: 0;
+	padding: 0;
+}
+.info-right h2{
+	font-size: 20px;
+	color: #333;
+	padding:5px
+}
+.info-right h4{
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 2px 0 0 0;
+	line-height: 1.6;
+}
+/*.info-right img{
+	margin: 0;
+	padding: 0;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*媒体查询*/
+
+
+
+/*大于1200px*/
+@media (min-width: 1200px) {
+	.jumbotron h1{
+		font-size: 36px;
+		padding: 0 0 0 20px;
+		
+	}
+	.jumbotron h4{
+		font-size: 18px;
+		padding: 0 0 0 20px;
+		
+	}
+	.info-content h4{
+		font-size: 20px;
+		
+	}
+	
+}
+
+
+@media (min-width: 992px) {
+	.jumbotron h1{
+		font-size: 30px;
+		padding: 0 0 0 20px;
+		
+	}.jumbotron h4{
+		font-size: 16px;
+		padding: 0 0 0 20px;
+		
+	}
+	.info-content h4{
+		font-size: 18px;
+	}
+	
+}
+@media (min-width: 768px) {
+	.info-content h4{
+		font-size: 16px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	
+}
+
+@media (max-width: 640px) {
+	
+}
+
+
+@media (max-width: 480px) {
+	
+	
+}

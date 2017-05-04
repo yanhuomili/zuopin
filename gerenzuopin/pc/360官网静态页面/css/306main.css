@@ -1,0 +1,637 @@
+.clearfix:after;
+.clearfix:before{
+	content: " ";
+	display: table;
+}
+.clearfix:after{
+	clear:both;
+}
+li{
+	list-style: none;
+}
+*{
+	box-sizing:border-box;
+}
+html,body{
+	padding:0px;
+	margin:0px;
+}
+.overHidden{
+	list-style: none;
+	overflow: hidden;
+	white-space: nowrap;/*显示一行*/
+	text-overflow: ellipsis;
+}
+/*主体部分开始*/
+.container{
+	width:100%;
+}
+.header{
+	min-width:1600px;
+	height:800px;	
+}
+.headerTop{
+	width:100%;
+	height:36px;       /*文字垂直居中*/
+	line-height:36PX;
+	font-size: 14px;
+	background:#F5F5F5;
+	padding:0% 10%;    /*用内边距将文字挤到中间，文字内容占正行的百分之八十宽度*/
+}
+.headerTop div{
+	float:left;    /*中文版左浮动*/
+}
+.zwb{
+	color:#23AC38;
+}
+.zwbh:hover{
+	color:#23AC38;
+}
+.headerTop div:last-child{
+	float:right;     /* 有浮动右浮动*/
+}
+.headerMiddle{           /*头部第二行css开始*/
+	width:80%;
+	height:120px;
+	line-height:120px;
+	margin:0 auto;
+	font-family:微软雅黑;
+}
+.hMleft{              /* 头部第二行左边占15%*/
+	width:15%;
+	height:120px;
+	padding-top:28px;
+	float:left;
+}
+.hMleft img{
+	/*width:64px;
+	height:64px;*/
+}
+.hMmiddle{            /*头部第二行中间占55%*/
+	width:60%;
+	height:120px;
+	float:left;
+	text-align: center;
+}
+.hMmiddle ul{
+	margin:0px;
+	padding:0px;
+	font-size: 17px;
+}
+.hMmiddle li{
+	list-style: none;
+	display: inline-block;
+	width:100px;
+	font-size: 17px;
+
+}
+.hMmiddle li:hover{
+	color:#23AC38;
+}
+.hMright{                /* 头部第二行右边占30%*/
+	width:25%;
+	height:120px;
+	float:left;
+	text-align: right;
+}
+.hMright input{
+	max-width:200px;
+	height:40px;
+	border:2px solid #23AC38;
+	background:url(../img/xuebitu.png) 120px -252px no-repeat;
+	text-indent: 5px;
+	vertical-align: middle;
+	outline: 0 none;
+	
+	
+}
+.hMright button{
+	max-width:100px;
+	height:40px;
+	border:none;
+	background:#23AC38;
+	color:white;
+	vertical-align: middle;
+	outline: 0 none;
+}
+.hMright button:hover{
+	background:#00C749;
+}
+.headerButtom{           /*头部第三行css*/
+	width:80%;
+	height:580px;
+	margin:0 auto;
+	
+}
+.hBleft{               /* 头部第三行左边块*/
+	width:70%;
+	height:580px;
+	float: left;
+	border: 1px solid #999999;
+}
+.Bltop{
+	width:100%;
+	height:400px;
+}
+.Bltop img{
+	width:100%;
+	height:400px;
+}
+.Blbuttom{
+	width:100%;
+	height:156px;
+	margin:20px 0px;
+}
+.Blbzuo{
+	width:33.3%;
+	height:156px;
+	float:left;
+	padding: 28px 10px;
+}
+.Blbzuo p,.Blbzhong p,.Blbyou p{
+	font-size: 12px;
+	font-family: "微软雅黑";
+	color:#999999;
+}
+.Blbzuo h3,.Blbzhong h3,.Blbyou h3{
+	font-size: 18px;
+	color: rgb(51,51,51);
+}
+.shequ{
+	width:30%;
+	height:30%;
+	float:left;
+}
+.shequ img{
+	width:100%;
+	height:100px;
+	
+	
+}
+.fensi{
+	width:64%;
+	height:100px;
+	float:left;
+	padding-top:10px;
+}
+.fensi p,.fensi h3{
+	margin:5px 0px;
+	padding: 0px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.fensi h3:hover{
+	color: #23AC38;
+}
+.Blbzhong{
+	width:33.3%;
+	height:156px;
+	float:left;
+	padding: 28px 0px;	
+}
+.Blbyou{
+	width:33.3%;
+	height:156px;
+	float:left;
+	padding: 28px 10px;	
+}
+.hBright{                /* 头部第三行右边块*/
+	width:30%;
+	height:580px;
+	float:left;
+	border-top: 1px solid #999999;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+}
+.hBrtop{             /*头部第三行右边块上面*/
+	width:100%;
+	height:330px;
+	padding-left:30px;
+	padding-top:20px;
+}
+.hBrtopt{           /*右边块上面的上面*/
+	width:100%;
+	height:30px;
+}
+.hBrtopt h2{
+	margin:0px;
+	height:30px;
+	padding:0px;
+	float:left;
+	width:80%;	
+	color:#23AC38;
+}
+.gd{
+	float:right;
+	width:13%;
+	height:30px;
+	font-size: 12px;	
+}
+
+.gd:hover{
+	color:#23AC38;
+}
+.hBrtopm{               /*右边块上面的中间*/
+	width:100%;
+	height:140px;
+	padding-top:20px;
+}
+.e{
+	width:18%;
+	height:80px;
+	float:left;
+	border:1px solid #999999;
+}
+.e img{
+	width:100%;
+	height:100%;
+}
+.eyou{
+	width:80%;
+	float:right;
+}
+.eyou p{
+	margin-top:0px;
+	overflow: hidden;
+	white-space: nowrap;/*显示一行*/
+	text-overflow: ellipsis;
+}
+.eyou span{
+	display: inline-block;
+	height:63px;
+	overflow: hidden;
+	/*white-space: nowrap;*/
+	word-break: break-all;
+	text-overflow: ellipsis;
+}
+.eyou p:hover{
+	color:#23AC38;
+}
+.hBrtopb{               /*右边块上面的下面*/
+	width:100%;
+
+}
+.hBrtopb ul{
+	margin:0px;
+	padding:0px;
+}
+.hBrtopb li{
+	height:26px;
+	list-style: block;
+	background: url(../img/xuebitu.png) no-repeat -150px -368px;
+	font-size: 14px;
+	text-indent: 10px;
+	overflow: hidden;
+	white-space: nowrap;/*显示一行*/
+	text-overflow: ellipsis;
+}
+.hBrtopb li:hover{
+	color:#23AC38;
+}
+.hBrbuttom{           /*头部第三块右边块下面*/
+	width:100%;
+	height:250px;
+	padding-top: 20px;
+	padding-left: 30px;
+	border-top:1px solid #999999;
+}
+.hBrbuttom ul{
+	padding: 0px;
+}
+.hBrbuttom li{/*li宽度占百分之五十然后浮动*/
+	width:50%;
+	height:44px;
+	float: left;
+}
+.szxx img{
+	width:30px;
+	height:30px;
+}
+.szxx img,.szxx span{/*图片跟文字对齐*/
+	vertical-align: middle;
+	
+}
+.turngreen:hover{/*文字hover*/
+	color: #23AC38;
+}
+.xz{/*下载箭头部分*/
+	background: url(../img/xiazai.png) no-repeat ;
+	display: inline-block;
+	float:right;
+	width:16px;
+	height:16px;
+	margin-top:5%;
+	margin-right: 4%;
+}
+.xz img{/*下载箭头图片大小*/
+	width:16px;
+	height:16px;	
+}
+.xz:hover{/*下载箭头hover*/
+	background: url(../img/gxiazai.png) no-repeat ;	
+}
+/*中间部分css开始*/
+.content{
+	width:80%;
+	height:890px;
+	margin:0 auto;
+}
+.contentTop{
+	min-width:1108px;
+	height:890px;
+}
+.cTleft{/*content左边一列*/
+	float: left;
+	width:48%;
+	height:890px;
+}
+.leftTop{/*左边一列上面*/
+	min-width:540px;
+	height:610px;
+}
+.leftTop h2{
+	color: #23AC38;
+}
+.leftTop ul{
+	margin:0px;
+	padding:0px;
+	
+}
+.leftTop li{
+	float:left;
+	margin:0px;
+	padding: 0px;
+	width:50%;
+	height:141px;
+	border-top: 1px solid #999999;
+	border-right:1px solid #999999;
+}
+.ruanjianxia{/*360软件下面包住八个li的父级元素,仅仅用来设置边框*/
+	width:100%;
+	height:564px;
+	border-left:1px solid #999999;
+}
+.tu{
+	float: left;
+	width:30%;
+	height:100px;
+	text-align: right;
+	padding-top: 40px;
+}
+.tu img{
+	width:60px;
+	height:60px;
+}
+.shwenzi{
+	float: right;
+	width:60%;
+	height:141px;
+}
+.shwenzi span{
+	font-size: 12px;
+	color:#999999;
+}
+.shwenzi h4:hover{
+	color: #23AC38;
+}
+.shwenzi button{
+	width:70px;
+	height:30px;
+	border:none;
+}
+.leftButtom{/*左边一列下面*/
+	width: 100%;
+	height:280px;
+	padding: 20px 0px;
+	border: 1px solid #999999;
+}
+.leftButtom span:hover{
+	color:#23AC38;
+}
+.btm{
+	width:100%;
+	height:60px;
+	line-height:30px;
+	padding-left: 120px;
+	font-size: 14px;
+	margin-bottom:20px;
+}
+.one{
+	background:url(../img/xuebitu.png) no-repeat -90px 0px;
+}
+.two{
+	background:url(../img/xuebitu.png) no-repeat -90px -60px;
+}
+.thr{
+	background:url(../img/xuebitu.png) no-repeat -90px -120px;
+}
+.cTright{/*content右边一列*/
+	float:right;
+	width:48%;
+	height:890px;
+}
+.rightTop{
+	min-width:540px;
+	height:615px;
+}
+.rightTop h2{
+	color: #23AC38;
+}
+.rightTop ul{
+	padding: 0px;
+}
+.rightTop li{
+	float:left;
+	margin:0px;
+	width:50%;
+	height:141px;
+	border-left:1px solid #999999;
+	border-bottom:1px solid #999999;
+	padding: 10px 20px 0px 30px;
+}
+.dier,.disi{
+	border-right:1px solid #999999;
+}
+.rightTop h4:hover{
+	color:#23AC38;
+}
+.siheyi{
+	width:100%;
+	height:282px;
+}
+.siheyi img{
+	width:100%;
+	height:100%;
+	border:1px solid #ccc;
+	vertical-align: middle;
+}
+.xiatupian{
+	max-width:100%;
+	max-height: 100%;
+	float:right;
+}
+.xiawenzi{
+	float:left;
+}
+.four{
+	background:url(../img/xuebitu.png) no-repeat -90px -180px;
+}
+.five{
+	background:url(../img/xuebitu.png) no-repeat -90px -240px;
+}
+.six{
+	background:url(../img/xuebitu.png) no-repeat -90px -300px;
+}
+/*底部css开始*/
+.footer{
+	width:80%;
+	height:800px;
+	margin:0 auto;
+}
+.fHead{/*开学季图片*/
+	width:100%;
+	height:100px;
+	border: 1px solid #999;
+	margin:60px 0px;
+}
+.fHead img{
+	width:100%;
+	height:100%;
+}
+.fmiddle{      
+	float: left;
+	width:22%;
+	height:530px;
+	padding-top:20px;
+}
+.youbj{
+	margin-right:4%;
+}
+.fMtop h2{
+	margin:0px;
+	height:30px;
+	padding:0px;
+	float:left;
+	width:80%;	
+	color:#23AC38;
+}
+.fgd{
+	float:right;
+	width:20%;
+	height:30px;	
+	font-size: 14px;
+}
+.fgd:hover{
+	color:#23AC38;
+}
+.lidaimo{
+	display: inline-block;
+	float: left;
+	width:100%;
+	height:40px;
+	line-height: 40px;;
+	font-size: 14px;
+	background: #F6F6F6;
+}
+.lidaimo:hover{
+	color: #23AC38;
+}
+.fMmiddle{
+	width:100%;
+	height:230px;
+	text-align: center;
+}
+.fMmiddle img{
+	width:100%;
+	height:100%;
+	
+}
+.fMbuttom{              
+	width:100%;
+	height:280px;
+	padding-top: 10px;
+
+}
+.fMbuttom ul{
+	margin:0px;
+	padding:0px;
+}
+.fMbuttom li{
+	margin-top: 20px;
+	height:34px;
+	list-style: block;
+	background: url(../img/xuebitu.png) no-repeat -150px -368px;
+	font-size: 14px;
+	text-indent: 10px;
+}
+.fMbuttom li:hover{
+	color:#23AC38;
+}
+.footerf{/*底部有背景颜色部分和最后版权标注部分*/
+	width:100%;
+	height:280px;
+	background: #F6F6F6;
+}
+.fff{/*有背景颜色部分*/
+	width:80%;
+	height:280px;
+	margin:0 auto;
+}
+.ff{
+	float: left;
+	width:20%;
+	height:280px;
+	padding-top:20px;
+}
+.ff ul{
+	margin:0px;
+	padding: 0px;
+	color: #333;
+}
+.ff li{
+	font-size: 14px;
+	height:28px;
+	margin:0px;
+	padding: 0px;
+}
+.ff li:hover{
+	color: #23AC38;
+}
+.ff span{
+	color:#999;
+}
+.gf{
+	width:40%;
+	float:left;
+	text-align: center;
+}
+.js{
+	width:40%;
+	float:right;
+	text-align: center;
+}
+.gfwb{
+	display: inline-block;
+	float: right;
+	font-size: 14px;
+	padding-left: 30px;
+	width:90px;
+	height:18px;
+	background: url(../img/xuebitu.png) no-repeat -150px -485px;
+}
+.gfwb:hover{
+	color: #23AC38;
+}
+.zuidibu{/*最底部的三行*/
+	width:100%;
+	height:200px;
+	text-align: center;
+	font-size: 12px;
+	color: #999999;
+	padding-top: 30px;
+}
+.zuidibu img ,.zuidibu span{
+	vertical-align: middle;
+}
+

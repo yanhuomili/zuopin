@@ -1,0 +1,24 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "css/index.css",
+      "js/jquery-3.1.1.min.js",
+      "js/index.js",
+      "img/logo.png",
+      "img/title2.png",
+      "img/title.png",
+      "img/tree.jpg",
+      "img/star.png",
+      "img/news.png",
+      "img/tranks2.png",
+      "img/1.jpg",
+      "img/2.jpg",
+      "img/3.jpg",
+      "img/4.jpg",
+      "img/5.jpg"
+    ],
+    "refer": [],
+    "priority": 0
+  }
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>机票预订</title>
+		<link rel="stylesheet" type="text/css" href="css/ticket.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<!--头部导航-->
+		<!--section:具有语义化包含一个h1-h6的标题和一个段落-->
+		<!--body,nav,section的大纲要求包含h1-h6的标题-->
+		<!--header,div不需要包含标题-->
+		<header id="header">
+			<div class="center">
+				<h1 class="logo"></h1>
+				<nav class="link">
+					<ul>
+						<li><a href="index.html">首页</a></li>
+						<li><a href="information.html">旅游咨询</a></li>
+						<li class="active"><a href="###">机票预订</a></li>
+						<li><a href="###">风景欣赏</a></li>
+						<li><a href="###">公司简介</a></li>
+					</ul>
+				</nav>	
+			</div>
+		</header>
+		<!--搜索区-->
+		<div id="headline">
+			<div class="center">
+				<p>旅游景点</p>
+				<span>介绍各种最新旅游、信息、资讯要闻、景点攻略</span>
+			</div>
+		</div>
+		<!--侧栏-->
+		<div id="container">
+			<!--右边经典推荐部分-->
+			<div class="sidebar">
+				<div class="sidebox reconmend">
+					<h2>景点推荐</h2>
+					<div class="tag">
+						<ul>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+							<li><a href="###">曼谷(12)</a></li>
+						</ul>	
+					</div>
+				</div>
+				<div class="sidebox hot">
+					<h2>热门旅游</h2>
+					<div class="figure">
+						<figure>
+							<img src="img/a7.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+						<figure>
+							<img src="img/a1.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+						<figure>
+							<img src="img/b4.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+						<figure>
+							<img src="img/b7.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+						<figure>
+							<img src="img/a9.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+						<figure>
+							<img src="img/b9.jpg"/>
+							<figcaption>曼谷-芭提雅6日游</figcaption>
+						</figure>
+					</div>
+					
+				</div>
+				<div class="sidebox reconmend">
+					<h2>旅游百宝箱</h2>
+					<div class="box">
+						<ul>
+							<li><a href="###">天气预报</a></li>
+							<li><a href="###">出游必备</a></li>
+							<li><a href="###">安全知识</a></li>
+							<li><a href="###">旅途见闻</a></li>
+						</ul>
+						
+					</div>
+				</div>
+			</div>
+			<!--左边机票预订-->
+			<div class="lists ticket">
+				<form action="###">
+					<h2>机票预订</h2>
+					<div class="type">
+						<p>航班类型：<mark>单程</mark>往返</p>
+					</div>
+					<div class="form left">
+						<p>
+							<label for="from-city">出发城市</label>
+							<input type="text" name="from-city" id="from-city" placeholder="出发城市" />
+						</p>
+						<p>
+							<label for="to-city">返回城市</label>
+							<input type="text" name="to-city" id="to-city" placeholder="返回城市" />
+						</p>
+					</div>
+					<div class="form right">
+						<p>
+							<label for="from-date">出发时间</label>
+							<input type="text" name="from-date" id="from-date" placeholder="出发时间" />
+						</p>
+						<p>
+							<label for="to-date">返回时间</label>
+							<input type="text" name="to-date" id="to-date" placeholder="返回时间" />
+						</p>
+					</div>
+					<div class="form button">
+						<p>
+							<button type="submit" class="submit">订票</button>
+						</p>
+					</div>
+				</form>
+				<div class="new">
+					<h2>最新机票</h2>
+					<ul>
+						<li>热门城市：</li>
+						<li>北京</li>
+						<li>上海</li>
+						<li>广州</li>
+						<li>深圳</li>
+						<li>重庆</li>
+						<li>成都</li>
+						<li>杭州</li>
+						<li>南京</li>
+					</ul>
+					<table>
+						<thead>
+							<tr>
+								<th>路线</th>
+								<th>日期</th>
+								<th>价格</th>
+								<th>水费</th>
+								<th>餐食</th>
+								<th>航班</th>
+								<th>预定</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>北京-成都</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>北京-杭州</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>北京-苏州</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>北京-上海</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>海南-广州</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>海南-武汉</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>四川-湖南</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>张家界-海南</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>青岛-南宁</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+							<tr>
+								<td>大连-黑龙江</td>
+								<td>10-15</td>
+								<td class="price">&yen;745</td>
+								<td>&yen;50</td>
+								<td>有</td>
+								<td>春秋航班</td>
+								<td><a href="###" class="reverse">预定</a></td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="7"><a href="###" class="more">加载更多航班</a></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--底部-->
+		<footer id="footer">
+			<div class="top">
+				<div class="block left">
+					<h2>合作伙伴</h2>
+					<hr />
+					<ul>
+						<li>梦想旅行社</li>
+						<li>天天旅行社</li>
+						<li>假日优惠旅行社</li>
+						<li>国内七日游</li>
+					</ul>
+				</div>
+				<div class="block center">
+					<h2>旅游FQA</h2>
+					<hr />
+					<ul>
+						<li>旅游？哪里有优惠</li>
+						<li>国外游的注意事项</li>
+						<li>旅途中的吃住玩？</li>
+						<li>如何做到入乡随俗</li>
+					</ul>
+				</div>
+				<div class="block right">
+					<h2>联系我们</h2>
+					<hr />
+					<ul>
+						<li>游后服务</li>
+						<li>举报投诉</li>
+						<li>意见建议</li>
+						<li>热门景点咨询</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="bot">&copy;梦想旅行社，放飞梦想，净化心灵</div>
+		</footer>
+	</body>
+</html>
